@@ -1,0 +1,220 @@
+{
+    "info": {
+        "name": "Tax Calculator API",
+        "description": "Complete API collection for Tax Calculator",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/auth/register",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["auth", "register"]
+                        }
+                    }
+                },
+                {
+                    "name": "Login User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/auth/login",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["auth", "login"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Current User",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/auth/me",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["auth", "me"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tax Calculation",
+            "item": [
+                {
+                    "name": "Calculate Tax",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000/tax/calculate?gross_salary=500000",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "calculate"],
+                            "query": [
+                                {
+                                    "key": "gross_salary",
+                                    "value": "500000"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tax Records",
+            "item": [
+                {
+                    "name": "Create Tax Record",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"gross_salary\": 500000,\n    \"tax_year\": 2024\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/tax/records",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "records"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Tax Records",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/tax/records",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "records"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Tax Record by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/tax/records/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "records", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Tax Record",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"gross_salary\": 600000,\n    \"tax_year\": 2024\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/tax/records/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "records", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Tax Record",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_JWT_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/tax/records/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["tax", "records", "1"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
